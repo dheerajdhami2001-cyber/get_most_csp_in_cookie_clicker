@@ -1,5 +1,3 @@
-from dataclasses import replace
-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -12,7 +10,7 @@ driver = webdriver.Chrome(options=chrome_options)
 driver.get("https://orteil.dashnet.org/experiments/cookie/")
 
 cookie = driver.find_element(By.ID, value="cookie")
-cps = driver.find_element(By.ID, value="cps")
+
 
 five_min = time.time() + 60*5
 timeout = time.time() + 5
@@ -48,4 +46,5 @@ while time.time() < five_min:
 
         timeout = time.time() + 5
 
+cps = driver.find_element(By.ID, value="cps").text
 print(f"wow your cps are {cps} ")
